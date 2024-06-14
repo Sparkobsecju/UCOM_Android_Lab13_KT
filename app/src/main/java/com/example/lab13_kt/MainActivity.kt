@@ -29,8 +29,18 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        TODO("Not yet implemented")
+        var message: String = ""
+        when (event!!.action) {
+            MotionEvent.ACTION_DOWN -> message = "壓下"
+            MotionEvent.ACTION_MOVE -> message = "移動"
+            MotionEvent.ACTION_UP -> message = "放開"
+            MotionEvent.ACTION_CANCEL -> message = "取消"
+        }
+        textView.text = "[$message] at [${event.x}, ${event.y}]"
+
+        return true
+        // true will receive remaining events
     }
-    
+
 
 }
